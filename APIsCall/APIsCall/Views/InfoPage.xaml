@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:APIsCall.ViewModels"
+             x:DataType="vm:InfoPageViewModel"
+             x:Class="APIsCall.Views.InfoPage">
+    <ScrollView>
+        <VerticalStackLayout VerticalOptions="Start"
+                             Margin="12,10">
+            <Border Style="{StaticResource customBorder}"
+                    Stroke="Green">
+                <VerticalStackLayout>
+                    <Image Source="{Binding Monkey.Image}"
+                           HeightRequest="200"
+                           WidthRequest="200" />
+
+                    <Label Text="{Binding Monkey.Name}"
+                           FontSize="Large" />
+
+                    <Label Text="{Binding Monkey.Details}"
+                           FontSize="Medium" />
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

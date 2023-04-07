@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               xmlns:vm="clr-namespace:APIsCall.ViewModels"
+               x:DataType="vm:BasePopUpViewModel"
+               Color="Transparent"
+               x:Class="APIsCall.Views.BasePopUp">
+    <Border BackgroundColor="CadetBlue"
+            Margin="12"
+            VerticalOptions="Center"
+            HorizontalOptions="Center">
+        <VerticalStackLayout>
+            <Label x:Name="mainLabel" Text="{Binding Title}"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center" />
+            <Button Text="Save" Clicked="Button_Clicked" />
+            <Button Text="Cancel" />
+        </VerticalStackLayout>
+    </Border>
+</toolkit:Popup>

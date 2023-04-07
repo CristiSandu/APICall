@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:APIsCall.ViewModels"
+             x:DataType="vm:WeatherPageViewModel"
+             x:Class="APIsCall.Views.WeatherPage"
+             Title="{Binding Title}">
+
+    <ScrollView>
+        <Grid VerticalOptions="Center">
+            <VerticalStackLayout Margin="0,0,0,0">
+
+                <Image Source="{Binding Weather.Current.Condition.Icon, StringFormat='https:{0}'}"
+                       HeightRequest="64"
+                       WidthRequest="64"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center" />
+
+                <Label Text="{Binding Weather.Current.Condition.Text}"
+                       FontSize="Title"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center" />
+
+                <Label Text="{Binding Weather.Current.TempC, StringFormat= 'Temp: {0}&#176;C'}"
+                       FontSize="Title"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center" />
+
+
+                <Label Text="{Binding Weather.Current.Humidity, StringFormat= 'Humy: {0}%'}"
+                       FontSize="Title"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center" />
+
+
+                <Label Text="{Binding Weather.Location.Name}"
+                       FontSize="24"
+                       HorizontalTextAlignment="Center" />
+
+                <ScrollView Orientation="Horizontal"
+                            HorizontalScrollBarVisibility="Never">
+
+                    <HorizontalStackLayout BindableLayout.ItemsSource="{Binding AirQList}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding .}"
+                                           FontAttributes="Bold"
+                                           HorizontalTextAlignment="Center"
+                                           FontSize="Medium"
+                                           Margin="12,12,12,12" />
+                                </VerticalStackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </HorizontalStackLayout>
+                </ScrollView>
+
+                <Button Text="Refresh"
+                        TextTransform="None"
+                        HorizontalOptions="Center"
+                        Command="{Binding GetInitalDataCommand}" />
+
+
+                <Button Text="Open a PopUp"
+                        TextTransform="None"
+                        HorizontalOptions="Center"
+                        Command="{Binding OpenPopUpCommand}" />
+            </VerticalStackLayout>
+            <Border VerticalOptions="FillAndExpand"
+                    IsVisible="{Binding IsBusy}"
+                    Stroke="Transparent"
+                    HeightRequest="500">
+                <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                   IsVisible="{Binding IsBusy}"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center" />
+            </Border>
+        </Grid>
+    </ScrollView>
+</ContentPage>

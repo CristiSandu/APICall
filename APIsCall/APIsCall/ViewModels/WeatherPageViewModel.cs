@@ -12,7 +12,7 @@ namespace APIsCall.ViewModels;
 
 public partial class WeatherPageViewModel : BaseViewModel
 {
-    string apiKey = "9c72f587913445e1bff82727230704";
+    string apiKey = "";
 
     [ObservableProperty]
     WeatherModel weather;
@@ -49,7 +49,6 @@ public partial class WeatherPageViewModel : BaseViewModel
         {
           
         }
-
     }
 
 
